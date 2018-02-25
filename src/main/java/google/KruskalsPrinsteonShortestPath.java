@@ -52,7 +52,7 @@ public class KruskalsPrinsteonShortestPath {
                 parent = graphPair.getSource();
             }
 
-            isCycle(unionFind, graphPair, parent);
+            isCycle(unionFind, graphPair);
 
         }
 
@@ -69,7 +69,7 @@ public class KruskalsPrinsteonShortestPath {
 
     }
 
-    private static boolean isCycle(int[] unionFind, GraphPair<Integer, Integer, Integer> selectedNodes, int originalParent) {
+    private static boolean isCycle(int[] unionFind, GraphPair<Integer, Integer, Integer> selectedNodes) {
 
         int source = selectedNodes.getSource();
         int destination = selectedNodes.getDestination();
@@ -83,6 +83,10 @@ public class KruskalsPrinsteonShortestPath {
             } else {
                 unionFind[destination] = parent;
             }
+
+            /**
+             * Most important piece of code which is which corrects the unionFind to the right parent.
+             */
 
             for (int i = 0; i < unionFind.length; i++) {
                 if (destination == unionFind[i]) {
