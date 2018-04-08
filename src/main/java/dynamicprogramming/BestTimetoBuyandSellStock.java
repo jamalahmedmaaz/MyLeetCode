@@ -21,9 +21,14 @@ public class BestTimetoBuyandSellStock {
         int totalMax = 0;
 
         for (int i = 1; i < prices.length; i++) {
+
+            System.out.println(currentMax + " + " + prices[i] + " - " + prices[i - 1]);
+
             currentMax = Math.max(0, currentMax + (prices[i] - prices[i - 1]));
 
             totalMax = Math.max(totalMax, currentMax);
+
+            System.out.println("Current total " + currentMax + " overalltotal " + totalMax);
         }
 
         System.out.println(totalMax);
